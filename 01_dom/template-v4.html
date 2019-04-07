@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <h1>{{title}}</h1>
+  <h1 c3r-bind="abc">{{greeting()}}</h1>
+  <a :href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      title: 'Using VueJS 2!',
+      link: 'http://google.com.br'
+    },
+    methods: {
+      greeting(event) {
+        console.log(this)
+        return this.title
+      }
+    }
+  })
+</script>
