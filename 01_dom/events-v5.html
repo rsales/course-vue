@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <h1>{{counter}}</h1>
+  <button @click="add(5, $event)">Somar +1</button>
+  <p @mousemove="updateXY">
+    Mouse: {{x}} e {{y}}
+    <span @mousemove.stop="">PARAR AQUI!!!!</span>
+  </p>
+  <a @click.prevent="notNavigate" href="http://google.com.br">Google</a>
+  <hr>
+  <input type="text" @keyup.enter.alt="showAlert">
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      counter: 0,
+      x: 0,
+      y: 0,
+    },
+    methods: {
+      add(step, event) {
+        console.log(step, event)
+        this.counter += step
+      },
+      updateXY(event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+      showAlert() {
+        alert('Estou te Alertando 🚨')
+      },
+      notNavigate(event) {
+        console.log('Não pode navegar 😞')
+        // event.preventDefault();
+      },
+      // stop(event) {
+      //   event.stopPropagation();
+      // }
+    },
+  })
+</script>
