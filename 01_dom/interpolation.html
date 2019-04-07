@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <h1>{{counter}}</h1>
+  <h1>{{counter * 2}}</h1>
+  <h1>{{counter > 10 ? 'Maior do que 10' : 'Menor do que 10'}}</h1>
+  <button @click="add()">Somar +1</button>
+
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      counter: 0,
+    },
+    methods: {
+      add(step) {
+        this.counter++
+      }
+    },
+  })
+</script>

@@ -1,0 +1,40 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button @click="increase">Aumentar</button>
+  <button @click="counter2++">Aumentar 2</button>
+  <button @click="decrease">Diminuir</button>
+  <hr>
+  <p>Contador: {{counter}} | {{counter2}}</p>
+  <p>Resultado: {{result}}</p>
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      counter: 0,
+      counter2: 0,
+    },
+    computed: {
+      result(){
+        console.log('método computed resultado chamado...')
+        return this.counter >= 5 ?
+          'Maior ou igual a 5' : 'Menor que 5'
+      }
+    },
+    methods: {
+      increase() {
+        this.counter++
+      },
+      decrease() {
+        this.counter--
+      },
+      // result(){
+      //   console.log('método computed resultado chamado...')
+      //   return this.counter >= 5 ?
+      //     'Maior ou igual a 5' : 'Menor que 5'
+      // }
+    },
+  })
+</script>

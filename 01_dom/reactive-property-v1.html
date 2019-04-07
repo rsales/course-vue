@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <h1>{{title}}</h1>
+  <!-- <input type="text" :value="title" @input=" title = $event.target.value"> -->
+  <input type="text" v-model="title">
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      title: 'Usando VueJS 2!'
+    }
+  })
+</script>
