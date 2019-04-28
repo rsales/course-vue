@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <div class="demo" :class="{'color-1': applyC1}"
+    @click="applyC1 = !applyC1"></div>
+  <div class="demo" ></div>
+  <div class="demo"></div>
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      applyC1: false
+    }
+  })
+  </script>
+
+<style>
+  #app {
+    display: flex;
+    justify-content: space-around;
+  }
+  .demo {
+    width: 100px;
+    height: 100px;
+    background: gray;
+  }
+  .color-1 {
+    background: red;
+  }
+  .color-2 {
+    background: green;
+  }
+  .color-3 {
+    background: blue;
+  } 
+</style>

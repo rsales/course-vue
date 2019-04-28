@@ -1,0 +1,58 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <div class="boxs">
+    <div class="demo" 
+      :class="style1"
+      @click="applyC1 = !applyC1"></div>
+    <div class="demo"
+      :class="style1"></div>
+    <div class="demo" 
+      :class="[classCSS, {'router': applyRouted}]"></div>
+  </div>
+  <hr>
+  <input type="text" v-model="classCSS">
+</div>
+
+<script>
+  new Vue({
+    el:'#app',
+    data: {
+      applyC1: false,
+      classCSS: 'color-1',
+      applyRouted: true
+    },
+    computed: {
+      style1() {
+        return {
+          'color-1': this.applyC1,
+          'color-2': !this.applyC1,
+        }
+      }
+    },
+  })
+  </script>
+
+<style>
+  .boxs {
+    display: flex;
+    justify-content: space-around;
+  }
+  .demo {
+    width: 100px;
+    height: 100px;
+    background: gray;
+  }
+  .color-1 {
+    background: red;
+  }
+  .color-2 {
+    background: green;
+  }
+  .color-3 {
+    background: blue;
+  }
+  .router  {
+    transform: rotate(45deg)
+  }
+</style>

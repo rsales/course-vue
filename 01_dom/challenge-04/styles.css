@@ -1,0 +1,78 @@
+/*=========
+	challenge 1
+==========*/
+
+#efeito {
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	border: 1px solid black;
+	transition: 0.3s;
+}
+
+.destaque {
+	background-color: red;
+	width: 200px !important;
+	transition: 0.3s;
+}
+
+.encolher {
+	background-color: gray;
+	width: 50px !important;
+	transition: 0.3s;
+}
+
+/*=========
+	challenge 2
+==========*/
+
+.big {
+	font-size: 2.0rem
+}
+
+.yfont {
+	background-color: yellow;
+	color: black;
+}
+
+/*=========
+	challenge 3 / challenge 4 / challenge 5
+==========*/
+
+.peperoni-box {
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+	background-color: gray;
+}
+
+.peperoni-box.bg-red {
+	background-color: red;
+}
+.peperoni-box.bg-blue {
+	background-color: blue;
+}
+.peperoni-box.bg-yellow {
+	background-color: yellow;
+}
+
+.bsize {
+	width: 100px;
+	height: 100px;
+}
+
+/*=========
+	challenge 6
+==========*/
+
+.progress-bar {
+	height: 30px;
+	width: 500px;
+	margin: 5px;
+	border: 1px solid #000;
+}
+
+.progress {
+	background-color: red;
+	height: 100%;
+}
