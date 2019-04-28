@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <ul>
+    <li v-for="(color, index) in colors">{{ index + 1 }} - {{ color }}</li>
+  </ul>
+  <hr>
+  <template v-for="(color, index) in colors">
+    <h1>{{ color }}</h1>
+    <p>{{ index }}</p>
+  </template>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      colors: ['red', 'green', 'yellow', 'blue'],
+      peoples: [
+        {name: 'Ana', age: 26, Weight: 59},
+        {name: 'Rafael', age: 22, Weight: 89}
+      ]
+    }
+  })
+</script>
+
+<style>
+  ul {
+    list-style: none;
+  }
+
+  h1, p {
+    display: inline;
+  }
+</style>
