@@ -1,0 +1,32 @@
+@keyframes arrowAnimate {
+  0% {transform: translateY(-10px);}
+  50% {transform: translateY(0);}
+  100% {transform: translateY(-10px);}
+}
+
+.select.active::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0dd";
+  color: #F75C5C;
+  position: absolute;
+  left: 50%;
+  top: -96px;
+  font-size: 73px;
+  animation-name: arrowAnimate;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  transition-timing-function: 0.5s ease;
+}
+
+.select.active img.players {
+  transform: scale(1.07)
+}
+
+img.players {
+  cursor: pointer;
+}
+
+#playerController {
+  cursor: pointer;
+}

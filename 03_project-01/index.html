@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game - The Monster Killer</title>
+
+  <!-- include Bootstrap4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- include Fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- include animate.css -->
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
+  <!-- include personalized style -->
+  <link rel="stylesheet" href="assets/stylesheets/game.css">
+</head>
+<body>
+  <div id="game">
+    <img class="w-25 mt-4 fixed-top mx-auto d-block" src="assets/images/logo.svg" alt="">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-start" style="height: 100vh">
+        <div class="col align-self-center mt-3 select active">
+          <img class="players mx-auto d-block" src="assets/images/player1.svg" alt="player1">
+        </div>
+        <div class="col align-self-center mt-3 select">
+          <img class="players mx-auto d-block" src="assets/images/player2.svg" alt="player1">
+        </div>
+        <div class="col align-self-center mt-3 select">
+          <img class="players mx-auto d-block" src="assets/images/player3.svg" alt="player1">
+        </div>
+      </div>
+    </div>
+
+    <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
+      <img src="assets/images/sound_on.svg" alt="">
+      <img id="playerController" class="ml-5" src="assets/images/joystick.svg" alt="">
+      <button class="btn btn-primary rounded-pill"><strong>Player</strong> Game</button>
+
+      <audio autoplay loop>
+        <!-- <source src="horse.ogg" type="audio/ogg"> -->
+        <source src="assets/music/8_Bit_March.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <!-- include Bootstrap4 -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- include Fontawesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+  <!-- include tippy.js -->
+  <script src="https://unpkg.com/tippy.js@4"></script>
+
+  <script>
+    tippy('#playerController', {
+      content: "I'm a Tippy tooltip!",
+    })
+  </script>
+  
+  <!-- include script VUE -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</body>
+</html>
