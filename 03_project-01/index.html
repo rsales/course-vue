@@ -21,13 +21,14 @@
     <div class="container-fluid">
       <div class="row align-items-center justify-content-start" style="height: 100vh">
         <div v-for="(player, index) in players" class="col align-self-center mt-5 select" :class="{'active': player.select}">
+          <input name="playerSelect" type="radio" :id="player.name">
           <img class="players mx-auto d-block animated bounceIn" :src="player.image" :alt="player.name">
         </div>
       </div>
     </div>
 
     <div id="template-3">
-      <div class="max-w-md w-full">
+      <div class="max-w-md w-full rounded-pill">
         <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fist-raised"></i></button>
         <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fire"></i></button>
         <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="far fa-plus-square"></i></button>
@@ -45,7 +46,7 @@
       <button class="btn btn-primary rounded-pill"><strong>Player</strong> Game</button>
 
       <audio autoplay loop>
-        <!-- <source src="horse.ogg" type="audio/ogg"> -->
+        <source src="assets/music/sky_skating.ogg" type="audio/ogg">
         <source src="assets/music/sky_skating.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
