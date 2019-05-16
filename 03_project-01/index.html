@@ -11,7 +11,7 @@
   <!-- include Fontawesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <!-- include animate.css -->
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <!-- include personalized style -->
   <link rel="stylesheet" href="assets/stylesheets/game.css">
 </head>
@@ -20,21 +20,28 @@
     <img class="w-25 mt-4 fixed-top mx-auto d-block" src="assets/images/logo.svg" alt="">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-start" style="height: 100vh">
-        <div class="col align-self-center mt-3 select active">
-          <img class="players mx-auto d-block" src="assets/images/player1.svg" alt="player1">
+        <div v-for="(player, index) in players" class="col align-self-center mt-5 select" :class="{'active': player.select}">
+          <img class="players mx-auto d-block animated bounceIn" :src="player.image" :alt="player.name">
         </div>
-        <div class="col align-self-center mt-3 select">
-          <img class="players mx-auto d-block" src="assets/images/player2.svg" alt="player1">
-        </div>
-        <div class="col align-self-center mt-3 select">
-          <img class="players mx-auto d-block" src="assets/images/player3.svg" alt="player1">
-        </div>
+      </div>
+    </div>
+
+    <div id="template-3">
+      <div class="max-w-md w-full">
+        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fist-raised"></i></button>
+        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fire"></i></button>
+        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="far fa-plus-square"></i></button>
+        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-walking"></i></button>
       </div>
     </div>
 
     <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
       <img src="assets/images/sound_on.svg" alt="">
-      <img id="playerController" class="ml-5" src="assets/images/joystick.svg" alt="">
+      <img id="playerController" 
+          class="ml-5" 
+          src="assets/images/joystick.svg" 
+          alt="Controller" 
+        v-tippy="{ html: '#template-3', reactive : true, interactive : true, theme : 'light', animateFill : false }">
       <button class="btn btn-primary rounded-pill"><strong>Player</strong> Game</button>
 
       <audio autoplay loop>
@@ -52,16 +59,12 @@
   <!-- include Fontawesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
 
-  <!-- include tippy.js -->
-  <script src="https://unpkg.com/tippy.js@4"></script>
-`
-  <script>
-    tippy('#playerController', {
-      content: "I'm a Tippy tooltip!",
-    })
-  </script>
-
   <!-- include script VUE -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- include tippy.js -->
+  <script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+
+  <script src="assets/javascripts/game.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 @keyframes arrowAnimate {
-  0% {transform: translateY(-10px);}
-  50% {transform: translateY(0);}
-  100% {transform: translateY(-10px);}
+  0% {transform: translate(-50%, -10px);}
+  50% {transform: translate(-50%, 0);}
+  100% {transform: translate(-50%, -10px);}
 }
 
 .select.active::before {
@@ -13,6 +13,7 @@
   left: 50%;
   top: -96px;
   font-size: 73px;
+  transform: translate(-50%, -10px);
   animation-name: arrowAnimate;
   animation-duration: 4s;
   animation-iteration-count: infinite;
