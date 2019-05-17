@@ -20,9 +20,14 @@
     <img class="w-25 mt-4 fixed-top mx-auto d-block" src="assets/images/logo.svg" alt="">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-start" style="height: 100vh">
-        <div v-for="(player, index) in players" class="col align-self-center mt-5 select" :class="{'active': player.select}">
-          <input name="playerSelect" type="radio" :id="player.name">
-          <img class="players mx-auto d-block animated bounceIn" :src="player.image" :alt="player.name">
+        <div v-for="(player, index) in players" 
+          :key="index" 
+          class="col align-self-center mt-5 select" 
+          :class="{'active': player.select}"
+          @click="selectPlay(index)">
+          <div class="arrow-up"></div>
+          <input class="d-none" name="playerSelect" type="radio" :id="'p' + index" :value="index" v-model="playerSelect">
+          <img class="players mx-auto d-block" :src="player.image" :alt="player.name">
         </div>
       </div>
     </div>
@@ -37,7 +42,7 @@
     </div>
 
     <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
-      <img src="assets/images/sound_on.svg" alt="">
+      <img @click="music" :src="`assets/images/${this.muted == false ? 'sound_on' : 'sound_off'}.svg`" alt="" style="cursor: pointer">
       <img id="playerController" 
           class="ml-5" 
           src="assets/images/joystick.svg" 
@@ -47,6 +52,7 @@
 
       <audio autoplay loop>
         <source src="assets/music/sky_skating.ogg" type="audio/ogg">
+        <source src="assets/music/sky_skating.wav" type="audio/wav">
         <source src="assets/music/sky_skating.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
