@@ -27,23 +27,12 @@
   transition-timing-function: 0.5s ease;
 }
 
-/* .select.active .arrow-up {
-  width: 0;
-  height: 0;
-  border-left: 11rem solid transparent;
-  border-right: 11rem solid transparent;
-  border-bottom: 20rem solid #fff8e5;
-  position: absolute;
-  top: -73px;
-  left: 57px;
-} */
-
 .select img.players {
-  /* filter: gray;
+  filter: gray;
   -webkit-filter: grayscale(1);
   -webkit-filter: grayscale(100%);
   filter: url(resources.svg#desaturate);
-  filter: grayscale(100%); */
+  filter: grayscale(100%);
   transform: scale(0.9);
   transition: 0.3s;
 }

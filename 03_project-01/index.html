@@ -17,43 +17,71 @@
 </head>
 <body>
   <div id="game">
-    <img class="w-25 mt-4 fixed-top mx-auto d-block" src="assets/images/logo.svg" alt="">
-    <div class="container-fluid">
+    <!-- Logo Game -->
+    <img class="w-25 mt-4 fixed-top mx-auto d-block" src="assets/images/logo.svg" alt="Logo Game">
+
+    <!-- Section select player  -->
+    <div class="container-fluid" :class="{'animate': start, 'fade': start}">
       <div class="row align-items-center justify-content-start" style="height: 100vh">
+        <!-- {'active': player.select, 'animate': !player.select && start, 'bounceOut': !player.select && start} -->
         <div v-for="(player, index) in players" 
           :key="index" 
           class="col align-self-center mt-5 select" 
           :class="{'active': player.select}"
           @click="selectPlay(index)">
-          <div class="arrow-up"></div>
           <input class="d-none" name="playerSelect" type="radio" :id="'p' + index" :value="index" v-model="playerSelect">
           <img class="players mx-auto d-block" :src="player.image" :alt="player.name">
         </div>
       </div>
     </div>
 
+    <!-- Section contoller and options -->
     <div id="template-3">
-      <div class="max-w-md w-full rounded-pill">
-        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fist-raised"></i></button>
-        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-fire"></i></button>
-        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="far fa-plus-square"></i></button>
-        <button class="btn btn-primary mt-2 mb-2 rounded-pill disabled"><i class="fas fa-walking"></i></button>
+      <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
+      <div v-else class="max-w-md w-full rounded-pill">
+        <button class="btn btn-warning mt-2 mb-2 rounded-pill" :class="{'disabled': !start}"><i class="fas fa-fist-raised"></i></button>
+        <button class="btn btn-danger mt-2 mb-2 rounded-pill" :class="{'disabled': !start}"><i class="fas fa-fire"></i></button>
+        <button class="btn btn-primary mt-2 mb-2 rounded-pill" :class="{'disabled': !start}"><i class="far fa-plus-square"></i></button>
+        <button class="btn btn-dark mt-2 mb-2 rounded-pill" :class="{'disabled': !start}"><i class="fas fa-walking"></i></button>
       </div>
     </div>
 
     <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
-      <img @click="music" :src="`assets/images/${this.muted == false ? 'sound_on' : 'sound_off'}.svg`" alt="" style="cursor: pointer">
+      <img @click="music" 
+        :src="`assets/images/${this.muted == false ? 'sound_on' : 'sound_off'}.svg`" 
+        alt="Sound"
+        width="50px"
+        height="50px"
+        style="cursor: pointer">
       <img id="playerController" 
-          class="ml-5" 
-          src="assets/images/joystick.svg" 
-          alt="Controller" 
+        class="ml-5" 
+        src="assets/images/joystick.svg" 
+        alt="Controller" 
         v-tippy="{ html: '#template-3', reactive : true, interactive : true, theme : 'light', animateFill : false }">
-      <button class="btn btn-primary rounded-pill"><strong>Player</strong> Game</button>
 
-      <audio autoplay loop>
+      <button v-if="!start" 
+        @click="startGame()" 
+        class="btn btn-primary rounded-pill px-3"
+        :class="{'animated': start, 'fadeOut': start}">
+        <i class="far fa-play-circle"></i> <strong>Player</strong> Game
+      </button>
+      <img v-if="start" 
+        width="50px" 
+        height="50px" 
+        class="animated bounceIn"
+        style="cursor: pointer"
+        src="assets/images/history_game.svg" alt="">
+      
+
+      <audio id="audio-select" autoplay loop>
         <source src="assets/music/sky_skating.ogg" type="audio/ogg">
         <source src="assets/music/sky_skating.wav" type="audio/wav">
         <source src="assets/music/sky_skating.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <audio id="audio-start" loop>
+        <source src="assets/music/death.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
