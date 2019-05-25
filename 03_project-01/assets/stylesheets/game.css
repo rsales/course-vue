@@ -1,3 +1,7 @@
+.brand-game {
+  width: 25% !important;
+}
+
 @keyframes arrowAnimate {
   0% {transform: translate(-50%, -10px);}
   50% {transform: translate(-50%, 0);}
@@ -27,6 +31,10 @@
   transition-timing-function: 0.5s ease;
 }
 
+.select.before-none::before {
+  content: none !important;
+}
+
 .select img.players {
   filter: gray;
   -webkit-filter: grayscale(1);
@@ -49,4 +57,29 @@ img.players {
 
 #playerController {
   cursor: pointer;
+}
+
+.bg-starting {
+  background-image: url('../../assets/images/bg-gaming.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: 0.3s;
+}
+
+.carousel-indicators li {
+  background-color: red;
+  background-clip: padding-box;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+
+/**
+ * MOBILE VERSION
+ **/
+@media (max-width: 991.98px) {
+  .brand-game {
+    width: 80% !important;
+  }
 }
