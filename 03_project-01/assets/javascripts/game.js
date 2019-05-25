@@ -28,7 +28,7 @@ new Vue({
 		document.querySelector("#audio-select").play()
 		document.querySelector("#audio-select").volume = 0.2
 		document.querySelector("#audio-choosing").volume = 0.3
-		document.querySelector("#audio-start").volume = 0.3
+		document.querySelector("#audio-start").volume = 0.1
 	},
 	methods: {
 		// Função para alterar o icone de ativar e desativar o audio
