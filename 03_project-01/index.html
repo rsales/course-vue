@@ -56,7 +56,19 @@
         </div>
 
         <div class="col-4 col-sm-4 col-md-4 align-self-center mt-5 select active before-none">
-          <img class="players mx-auto d-block img-fluid" src="assets/gifs/effect_attack.gif" alt="attack" style="position: absolute; z-index: 9; bottom: -18%; right: 5px;">
+          <img class="players mx-auto img-fluid"
+            :class="{ 'd-none': !simpleAttack, 'd-block': simpleAttack }"
+            id="effect-attack"
+            src="assets/gifs/effect_attack.gif" 
+            alt="attack" 
+            style="position: absolute; z-index: 9; bottom: -18%; right: 5px;">
+            <img class="players mx-auto img-fluid"
+            :class="{ 'd-none': !masterAttack, 'd-block': masterAttack }"
+            id="effect-attack"
+            src="assets/gifs/effect_specialAttack1.gif" 
+            alt="attack" 
+            style="position: absolute; z-index: 9; bottom: 12%; right: 5px; transform: rotate(40deg); width: 100%;">
+
           <img class="players mx-auto d-block img-fluid animated infinite pulse slower" src="assets/images/monster1.svg" alt="monster">
         </div>
       </div>

@@ -22,10 +22,11 @@ new Vue({
 			}
 		],
 		playerSelect: 0,
+		simpleAttack: false,
+		masterAttack: false,
 	},
 	// Baixar o audio da música de fundo ao montar o layout
 	mounted: function () {
-		document.querySelector("#audio-select").play()
 		document.querySelector("#audio-select").volume = 0.2
 		document.querySelector("#audio-choosing").volume = 0.3
 		document.querySelector("#audio-start").volume = 0.1
@@ -53,13 +54,23 @@ new Vue({
 		},
 		// Função para ataque
 		attack() {
+			this.simpleAttack = true
 
+			// Efeito animato de ataque
+			setTimeout(() => {
+				this.simpleAttack = false
+			}, 500)
 			// Efeito sonoro de ataque
 			document.querySelector("#audio-atack").play()
 		},
 		// Função para ataque especial
 		specialAttack() {
+			this.masterAttack = true
 
+			// Efeito animato de ataque especial
+			setTimeout(() => {
+				this.masterAttack = false
+			}, 2100)
 			// Efeito sonoro de ataque especial
 			document.querySelector("#audio-specialAtack").play()
 		},
