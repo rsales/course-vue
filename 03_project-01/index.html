@@ -75,31 +75,6 @@
     </div>
 
     <!-- Section contoller and options -->
-    <div id="template-3">
-      <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
-      <div v-else class="max-w-md w-full rounded-pill">
-        <button @click="attack()"
-          class="btn btn-warning mt-2 mb-2 rounded-pill" 
-          :class="{'disabled': !start}">
-            <i class="fas fa-fist-raised"></i>
-        </button>
-        <button @click="specialAttack()"
-          class="btn btn-danger mt-2 mb-2 rounded-pill" 
-          :class="{'disabled': !start}">
-            <i class="fas fa-fire"></i>
-        </button>
-        <button @click="heal()"
-          class="btn btn-primary mt-2 mb-2 rounded-pill" 
-          :class="{'disabled': !start}">
-            <i class="far fa-plus-square"></i>
-        </button>
-        <button @click="endGame()" 
-          class="btn btn-dark mt-2 mb-2 rounded-pill" 
-          :class="{'disabled': !start}">
-            <i class="fas fa-walking"></i>
-        </button>
-      </div>
-    </div>
 
     <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
       <img @click="music" 
@@ -108,10 +83,40 @@
         width="50px"
         height="50px"
         style="cursor: pointer">
-      <img id="playerController"  
-        src="assets/images/joystick.svg" 
-        alt="Controller" 
-        v-tippy="{ html: '#template-3', reactive : true, interactive : true, theme : 'light', animateFill : false }">
+
+        <tippy reactive interactive :animate-fill="false" placement="bottom" distant="7" theme="light" animation="fade">
+          <template>
+            <img id="playerController"  
+              src="assets/images/joystick.svg" 
+              alt="Controller">
+          </template>
+
+          <div id="template-3">
+            <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
+            <div v-else class="max-w-md w-full rounded-pill">
+              <button @click="attack()"
+                class="btn btn-warning mt-2 mb-2 rounded-pill" 
+                :class="{'disabled': !start}">
+                  <i class="fas fa-fist-raised"></i>
+              </button>
+              <button @click="specialAttack()"
+                class="btn btn-danger mt-2 mb-2 rounded-pill" 
+                :class="{'disabled': !start}">
+                  <i class="fas fa-fire"></i>
+              </button>
+              <button @click="heal()"
+                class="btn btn-primary mt-2 mb-2 rounded-pill" 
+                :class="{'disabled': !start}">
+                  <i class="far fa-plus-square"></i>
+              </button>
+              <button @click="endGame()" 
+                class="btn btn-dark mt-2 mb-2 rounded-pill" 
+                :class="{'disabled': !start}">
+                  <i class="fas fa-walking"></i>
+              </button>
+            </div>
+          </div>
+        </tippy>
 
       <button v-if="!start" 
         @click="startGame()"
@@ -170,6 +175,7 @@
 
   <!-- include tippy.js -->
   <script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-tippy/dist/vue-tippy.min.js"></script>
 
   <script src="assets/javascripts/game.js"></script>
 </body>
