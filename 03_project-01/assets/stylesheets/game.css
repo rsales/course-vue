@@ -74,6 +74,34 @@ img.players {
   border-bottom: 10px solid transparent;
 }
 
+.progress-bar {
+	height: 40px;
+	width: 500px;
+	margin: 5px;
+  border: 3px solid #e2e2e2;
+  border-radius: 7px;
+  background-color: #fff;
+}
+
+.progress {
+	background-color: #49de70;
+  height: 100%;
+}
+
+.progress.danger {
+  background-color: red;
+}
+
+.controller {
+  background-color: #fff;
+  padding: 30px 60px;
+  box-shadow: #00000017 0px 0px 15px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 /**
  * MOBILE VERSION

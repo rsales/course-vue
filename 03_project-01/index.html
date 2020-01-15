@@ -42,11 +42,30 @@
 
     <!-- Section battle -->
     <div class="container-fluid" v-show="start">
-      <div class="row align-items-center justify-content-start" style="height: 100vh">
+      <!-- Section Life Bar -->
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 mt-3">
+          <h4 class="text-left text-white">Jogador - {{ playerLife }}%</h4>
+          <div class="progress-bar float-left">
+            <div class="progress"                
+                :class="{danger: playerLife < 20}"
+                :style="{width: playerLife + '%'}"></div>
+          </div>     
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 mt-4">
+          <h4 class="text-right text-white">Monstro - {{ monsterLife }}%</h4>
+          <div class="progress-bar float-right">
+            <div class="progress"
+                :class="{danger: monsterLife < 20}"
+                :style="{width: monsterLife + '%'}"></div>
+          </div> 
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-start" style="height: 85vh">
         <div v-for="(player, index) in players"
           v-if="player.select == true"
           :key="index" 
-          class="col-4 col-sm-4 col-md-4 align-self-center mt-5 select active before-none">
+          class="col-4 col-sm-4 col-md-4 align-self-center mt-3 select active before-none">
           <input class="d-none" name="playerSelect" type="radio" :id="'p' + index" :value="index" v-model="playerSelect">
           <img class="players mx-auto d-block img-fluid" :src="player.image" :alt="player.name">
         </div>
@@ -75,7 +94,6 @@
     </div>
 
     <!-- Section contoller and options -->
-
     <div id="controller" class="d-flex justify-content-between fixed-bottom p-3">
       <img @click="music" 
         :src="`assets/images/${this.muted == false ? 'sound_on' : 'sound_off'}.svg`" 
@@ -84,39 +102,35 @@
         height="50px"
         style="cursor: pointer">
 
-        <tippy reactive interactive :animate-fill="false" placement="bottom" distant="7" theme="light" animation="fade">
-          <template>
-            <img id="playerController"  
+        <div class="controller">
+          <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
+          <div v-else class="max-w-md w-full rounded-pill">
+            <img id="playerController"
+              class="mr-3"  
               src="assets/images/joystick.svg" 
               alt="Controller">
-          </template>
-
-          <div id="template-3">
-            <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
-            <div v-else class="max-w-md w-full rounded-pill">
-              <button @click="attack()"
-                class="btn btn-warning mt-2 mb-2 rounded-pill" 
-                :class="{'disabled': !start}">
-                  <i class="fas fa-fist-raised"></i>
-              </button>
-              <button @click="specialAttack()"
-                class="btn btn-danger mt-2 mb-2 rounded-pill" 
-                :class="{'disabled': !start}">
-                  <i class="fas fa-fire"></i>
-              </button>
-              <button @click="heal()"
-                class="btn btn-primary mt-2 mb-2 rounded-pill" 
-                :class="{'disabled': !start}">
-                  <i class="far fa-plus-square"></i>
-              </button>
-              <button @click="endGame()" 
-                class="btn btn-dark mt-2 mb-2 rounded-pill" 
-                :class="{'disabled': !start}">
-                  <i class="fas fa-walking"></i>
-              </button>
-            </div>
+            <button @click="attack()"
+              class="btn btn-warning rounded-pill" 
+              :class="{'disabled': !start}">
+                <i class="fas fa-fist-raised"></i>
+            </button>
+            <button @click="specialAttack()"
+              class="btn btn-danger rounded-pill" 
+              :class="{'disabled': !start}">
+                <i class="fas fa-fire"></i>
+            </button>
+            <button @click="heal()"
+              class="btn btn-primary rounded-pill" 
+              :class="{'disabled': !start}">
+                <i class="far fa-plus-square"></i>
+            </button>
+            <button @click="endGame()" 
+              class="btn btn-dark rounded-pill" 
+              :class="{'disabled': !start}">
+                <i class="fas fa-walking"></i>
+            </button>
           </div>
-        </tippy>
+        </div>
 
       <button v-if="!start" 
         @click="startGame()"

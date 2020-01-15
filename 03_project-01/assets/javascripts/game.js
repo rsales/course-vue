@@ -24,6 +24,8 @@ new Vue({
 		playerSelect: 0,
 		simpleAttack: false,
 		masterAttack: false,
+		playerLife: 100,
+		monsterLife: 100,
 	},
 	// Baixar o audio da música de fundo ao montar o layout
 	mounted: function () {
