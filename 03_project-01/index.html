@@ -67,16 +67,21 @@
           :key="index" 
           class="col-4 col-sm-4 col-md-4 align-self-center mt-3 select active before-none">
           <input class="d-none" name="playerSelect" type="radio" :id="'p' + index" :value="index" v-model="playerSelect">
-          <img class="players mx-auto d-block img-fluid" :src="player.image" :alt="player.name">
+          <img class="players mx-auto d-block img-fluid"
+            :class="{ 'loser-filter' : playerLife == 0}"
+            :src="player.image"
+            :alt="player.name">
         </div>
 
         <div class="col-4 col-sm-4 col-md-4 align-self-center mt-5 select active before-none">
-          <img class="players mx-auto d-block img-fluid" src="assets/images/illustration-vs.svg" alt="vs">
+          <img class="players mx-auto d-block img-fluid"
+            src="assets/images/illustration-vs.svg"
+            alt="vs">
         </div>
 
         <div class="col-4 col-sm-4 col-md-4 align-self-center mt-5 select active before-none">
           <img class="players mx-auto img-fluid"
-            :class="{ 'd-none': !simpleAttack, 'd-block': simpleAttack }"
+            :class="[{ 'd-none': !simpleAttack, 'd-block': simpleAttack }]"
             id="effect-attack"
             src="assets/gifs/effect_attack.gif" 
             alt="attack" 
@@ -88,7 +93,10 @@
             alt="attack" 
             style="position: absolute; z-index: 9; bottom: 12%; right: 5px; transform: rotate(40deg); width: 100%;">
 
-          <img class="players mx-auto d-block img-fluid animated infinite pulse slower" src="assets/images/monster1.svg" alt="monster">
+          <img class="players mx-auto d-block img-fluid"
+            :class="[{ 'animated infinite pulse slower' : monsterLife != 0},{ 'loser-filter' : monsterLife == 0}]"
+            src="assets/images/monster1.svg"
+            alt="monster">
         </div>
       </div>
     </div>
@@ -103,30 +111,45 @@
         style="cursor: pointer">
 
         <div class="controller">
-          <p v-if="!start" class="m-0">Available when starting the game <i class="fas fa-arrow-right"></i></p>
+          <p v-if="!start || hasResult" class="m-0">
+            <template v-if="!hasResult">
+              Available when starting the game <i class="fas fa-arrow-right"></i>
+            </template>
+            <a v-if="hasResult" style="cursor: pointer" @click="startGame()">
+              Tentar novamente <i class="fas fa-arrow-right"></i>
+            </a>
+          </p>
           <div v-else class="max-w-md w-full rounded-pill">
             <img id="playerController"
               class="mr-3"  
               src="assets/images/joystick.svg" 
               alt="Controller">
-            <button @click="attack()"
+            <button @click="attack(false)"
               class="btn btn-warning rounded-pill" 
-              :class="{'disabled': !start}">
+              :class="{'disabled': !start}"
+              content="Ataque"
+              v-tippy>
                 <i class="fas fa-fist-raised"></i>
             </button>
-            <button @click="specialAttack()"
+            <button @click="attack(true)"
               class="btn btn-danger rounded-pill" 
-              :class="{'disabled': !start}">
+              :class="{'disabled': !start}"
+              content="Ataque especial"
+              v-tippy>
                 <i class="fas fa-fire"></i>
             </button>
-            <button @click="heal()"
+            <button @click="healAndHurt()"
               class="btn btn-primary rounded-pill" 
-              :class="{'disabled': !start}">
+              :class="{'disabled': !start}"
+              content="Curar"
+              v-tippy>
                 <i class="far fa-plus-square"></i>
             </button>
             <button @click="endGame()" 
               class="btn btn-dark rounded-pill" 
-              :class="{'disabled': !start}">
+              :class="{'disabled': !start}"
+              content="Fugir"
+              v-tippy>
                 <i class="fas fa-walking"></i>
             </button>
           </div>
